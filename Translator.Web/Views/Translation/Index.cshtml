@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "LeetSpeak Translator";
+}
+
+<h2>LeetSpeak Translator</h2>
+
+<div>
+    <label for="inputText">Enter text to translate:</label>
+    <textarea id="inputText" rows="4" cols="50"></textarea>
+    <br />
+    <button id="translateButton">Translate</button>
+</div>
+
+<h3>Translated Text:</h3>
+<div id="translatedText"></div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#translateButton').click(function () {
+                var inputText = $('#inputText').val();
+                $.ajax({
+                    url: '@Url.Action("TranslateToLeetSpeak", "Translation")',
+                    type: 'POST',
+                    data: { text: inputText },
+                    success: function (response) {
+                        if (response.success) {
+                            $('#translatedText').text(response.translatedText);
+                        } else {
+                            $('#translatedText').text(response.message);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}
