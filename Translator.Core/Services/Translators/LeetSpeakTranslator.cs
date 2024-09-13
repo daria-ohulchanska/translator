@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 using Translator.Core.Models.Translators.LeetSpeakTranslator;
-using Constants = Translator.Shared.Constants.Constants;
+using Constants = Translator.Shared.Constants.Translators.Constants;
 
 namespace Translator.Core.Services.Translators
 {
@@ -18,7 +18,7 @@ namespace Translator.Core.Services.Translators
                     new KeyValuePair<string, string>("text", text)
                 ]);
 
-            return new HttpRequestMessage(HttpMethod.Post, Constants.AppSettings.LeetSpeak.Url)
+            return new HttpRequestMessage(HttpMethod.Post, Constants.AppSettings.LeetSpeakTranslator.Url)
             {
                 Content = content,
             };
