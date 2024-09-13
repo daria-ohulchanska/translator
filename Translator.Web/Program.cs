@@ -22,15 +22,15 @@ builder.Services.AddMemoryCache();
 
 builder.Services.AddScoped<ITranslator>(sp =>
 {
-    var httpClient = sp.GetRequiredService<HttpClient>();
+    var httpClientFactory = sp.GetRequiredService<IHttpClientFactory>();
     var cache = sp.GetRequiredService<IMemoryCache>();
 
     return 
         new CachedTranslator(
             new LimitedRateTranslator(
-                new LeetSpeakTranslator(httpClient),
-                Constants.AppSettings.LeetSpeak.RateLimitCount,
-                Constants.AppSettings.LeetSpeak.RateLimitPeriod), 
+                new LeetSpeakTranslator(httpClientFactory),
+                Constants.AppSettings.LeetSpeakTranslator.RateLimitCount,
+                Constants.AppSettings.LeetSpeakTranslator.RateLimitPeriod), 
             cache);
 });
 

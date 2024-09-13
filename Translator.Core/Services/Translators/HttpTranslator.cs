@@ -6,9 +6,9 @@ namespace Translator.Core.Services.Translators
     {
         private HttpClient _httpClient;
 
-        public HttpTranslator(HttpClient httpClient)
+        public HttpTranslator(IHttpClientFactory httpClientFactory)
         {
-            _httpClient = httpClient;
+            _httpClient = httpClientFactory.CreateClient();
         }
 
         public async Task<string> Translate(string text)

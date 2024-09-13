@@ -1,4 +1,4 @@
-﻿namespace Translator.Shared.Constants.Translators
+﻿namespace Translator.Shared.Constants
 {
     public static partial class Constants
     {

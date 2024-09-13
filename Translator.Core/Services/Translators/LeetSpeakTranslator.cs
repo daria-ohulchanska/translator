@@ -1,13 +1,13 @@
 ﻿using System.Text.Json;
 using Translator.Core.Models.Translators.LeetSpeakTranslator;
-using Constants = Translator.Shared.Constants.Translators.Constants;
+using Constants = Translator.Shared.Constants.Constants;
 
 namespace Translator.Core.Services.Translators
 {
     public class LeetSpeakTranslator : HttpTranslator
     {
-        public LeetSpeakTranslator(HttpClient httpClient) 
-            : base(httpClient)
+        public LeetSpeakTranslator(IHttpClientFactory httpClientFactory) 
+            : base(httpClientFactory)
         {
         }
 
